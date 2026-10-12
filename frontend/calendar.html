@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager - Calendar</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="logo">✓ Task Manager</div>
+    <nav>
+      <a href="dashboard.html">🏠 Dashboard</a>
+      <a href="tasks.html">📋 Tasks</a>
+      <a class="active" href="calendar.html">📅 Calendar</a>
+      <a href="reports.html">📊 Reports</a>
+      <a href="profile.html">👤 Profile</a>
+    </nav>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Calendar</h1>
+        <p>View tasks according to their scheduled dates</p>
+      </div>
+      <button class="add-task-btn" onclick="openTaskForm()">+ Add Task</button>
+    </header>
+
+    <section class="calendar-controls">
+      <button onclick="changeMonth(-1)">← Previous</button>
+      <h2 id="monthYear"></h2>
+      <button onclick="changeMonth(1)">Next →</button>
+    </section>
+
+    <section class="calendar-grid" id="calendarGrid"></section>
+
+    <section class="dashboard-section selected-day-section">
+      <div class="section-heading">
+        <div>
+          <h2 id="selectedDateTitle">Today's Tasks</h2>
+          <p>Tasks scheduled for the selected date</p>
+        </div>
+      </div>
+      <div id="dailyTasks" class="task-list"></div>
+    </section>
+  </main>
+</div>
+
+<div id="taskModal" class="modal">
+  <div class="modal-card">
+    <button class="close-btn" onclick="closeTaskForm()">×</button>
+    <h2>Add Task</h2>
+    <form id="taskForm">
+      <input type="hidden" id="editTaskId">
+      <label>Task Title</label>
+      <input type="text" id="taskTitle" required>
+      <label>Description</label>
+      <textarea id="taskDescription"></textarea>
+
+      <div class="form-row">
+        <div>
+          <label>Category</label>
+          <select id="taskCategory">
+            <option>College</option><option>Personal</option><option>Work</option>
+            <option>Projects</option><option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Priority</label>
+          <select id="taskPriority">
+            <option>High</option><option selected>Medium</option><option>Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label>Due Date</label>
+          <input type="date" id="taskDate" required>
+        </div>
+        <div>
+          <label>Due Time</label>
+          <input type="time" id="taskTime">
+        </div>
+      </div>
+
+      <label>Status</label>
+      <select id="taskStatus">
+        <option>To Do</option><option>In Progress</option><option>Completed</option>
+      </select>
+
+      <button class="primary-btn" type="submit">Save Task</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/tasks.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/notifications.js"></script>
+</body>
+</html>

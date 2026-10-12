@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager - Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="logo">✓ Task Manager</div>
+
+    <nav>
+      <a class="active" href="dashboard.html">🏠 Dashboard</a>
+      <a href="tasks.html">📋 Tasks</a>
+      <a href="calendar.html">📅 Calendar</a>
+      <a href="reports.html">📊 Reports</a>
+      <a href="profile.html">👤 Profile</a>
+    </nav>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h1>Dashboard</h1>
+        <p id="welcomeText">Welcome back!</p>
+      </div>
+      <button class="add-task-btn" onclick="openTaskForm()">+ Add Task</button>
+    </header>
+
+    <section class="summary-grid">
+      <div class="summary-card">
+        <span class="summary-icon">📋</span>
+        <div>
+          <h3>Total Tasks</h3>
+          <strong id="totalTasks">0</strong>
+        </div>
+      </div>
+
+      <div class="summary-card pending">
+        <span class="summary-icon">⏳</span>
+        <div>
+          <h3>Pending</h3>
+          <strong id="pendingTasks">0</strong>
+        </div>
+      </div>
+
+      <div class="summary-card completed">
+        <span class="summary-icon">✅</span>
+        <div>
+          <h3>Completed</h3>
+          <strong id="completedTasks">0</strong>
+        </div>
+      </div>
+
+      <div class="summary-card overdue">
+        <span class="summary-icon">⚠️</span>
+        <div>
+          <h3>Overdue</h3>
+          <strong id="overdueTasks">0</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="dashboard-section">
+      <div class="section-heading">
+        <div>
+          <h2>Upcoming Tasks</h2>
+          <p>Your nearest deadlines</p>
+        </div>
+        <a href="tasks.html">View all</a>
+      </div>
+
+      <div id="upcomingTasks" class="task-list"></div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Task Modal -->
+<div id="taskModal" class="modal">
+  <div class="modal-card">
+    <button class="close-btn" onclick="closeTaskForm()">×</button>
+    <h2 id="modalTitle">Add New Task</h2>
+
+    <form id="taskForm">
+
+      <input type="hidden" id="editTaskId">
+
+      <label>Task Title</label>
+      <input type="text" id="taskTitle" placeholder="Enter task title" required>
+
+      <label>Description</label>
+      <textarea id="taskDescription" placeholder="Describe your task"></textarea>
+
+      <div class="form-row">
+        <div>
+          <label>Category</label>
+          <select id="taskCategory">
+            <option>College</option>
+            <option>Personal</option>
+            <option>Work</option>
+            <option>Projects</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Priority</label>
+          <select id="taskPriority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label>Due Date</label>
+          <input type="date" id="taskDate" required>
+        </div>
+
+        <div>
+          <label>Due Time</label>
+          <input type="time" id="taskTime">
+        </div>
+      </div>
+
+      <label>Status</label>
+      <select id="taskStatus">
+        <option value="To Do">To Do</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+
+      <button class="primary-btn" type="submit">Save Task</button>
+
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/tasks.js"></script>
+<script src="js/notifications.js"></script>
+</body>
+</html>

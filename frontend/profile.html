@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager - Profile & Settings</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-layout">
+  <aside class="sidebar">
+    <div class="logo">✓ Task Manager</div>
+    <nav>
+      <a href="dashboard.html">🏠 Dashboard</a>
+      <a href="tasks.html">📋 Tasks</a>
+      <a href="calendar.html">📅 Calendar</a>
+      <a href="reports.html">📊 Reports</a>
+      <a class="active" href="profile.html">👤 Profile</a>
+    </nav>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Profile & Settings</h1>
+        <p>Manage your account and application settings</p>
+      </div>
+    </header>
+
+    <section class="profile-grid">
+      <div class="dashboard-section">
+        <h2>Profile Information</h2>
+
+        <form id="profileForm">
+          <label>Full Name</label>
+          <input id="profileName" type="text" required>
+
+          <label>Email</label>
+          <input id="profileEmail" type="email" required>
+
+          <button class="primary-btn" type="submit">Save Profile</button>
+        </form>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Application Settings</h2>
+
+        <div class="setting-row">
+          <div>
+            <strong>Notifications</strong>
+            <p>Receive task reminders and overdue alerts</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="notificationSetting">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <strong>Dark Theme</strong>
+            <p>Use a darker application appearance</p>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="themeSetting">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <button class="secondary-btn" onclick="changePassword()">Change Password</button>
+        <button class="danger-btn" onclick="logout()">Logout</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

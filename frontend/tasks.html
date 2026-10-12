@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager - Tasks</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="logo">✓ Task Manager</div>
+    <nav>
+      <a href="dashboard.html">🏠 Dashboard</a>
+      <a class="active" href="tasks.html">📋 Tasks</a>
+      <a href="calendar.html">📅 Calendar</a>
+      <a href="reports.html">📊 Reports</a>
+      <a href="profile.html">👤 Profile</a>
+    </nav>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <h1>My Tasks</h1>
+        <p>Create, update and manage your tasks</p>
+      </div>
+      <button class="add-task-btn" onclick="openTaskForm()">+ Add Task</button>
+    </header>
+
+    <section class="filters">
+      <input id="searchInput" type="text" placeholder="🔍 Search tasks..." oninput="renderTasks()">
+
+      <select id="filterPriority" onchange="renderTasks()">
+        <option value="">All Priorities</option>
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+      </select>
+
+      <select id="filterCategory" onchange="renderTasks()">
+        <option value="">All Categories</option>
+        <option>College</option>
+        <option>Personal</option>
+        <option>Work</option>
+        <option>Projects</option>
+        <option>Other</option>
+      </select>
+
+      <select id="filterStatus" onchange="renderTasks()">
+        <option value="">All Status</option>
+        <option>To Do</option>
+        <option>In Progress</option>
+        <option>Completed</option>
+        <option>Overdue</option>
+      </select>
+    </section>
+
+    <section id="allTasks" class="task-list full-task-list"></section>
+
+  </main>
+</div>
+
+<div id="taskModal" class="modal">
+  <div class="modal-card">
+    <button class="close-btn" onclick="closeTaskForm()">×</button>
+    <h2 id="modalTitle">Add New Task</h2>
+
+    <form id="taskForm">
+      <input type="hidden" id="editTaskId">
+
+      <label>Task Title</label>
+      <input type="text" id="taskTitle" required>
+
+      <label>Description</label>
+      <textarea id="taskDescription"></textarea>
+
+      <div class="form-row">
+        <div>
+          <label>Category</label>
+          <select id="taskCategory">
+            <option>College</option>
+            <option>Personal</option>
+            <option>Work</option>
+            <option>Projects</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Priority</label>
+          <select id="taskPriority">
+            <option>High</option>
+            <option selected>Medium</option>
+            <option>Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label>Due Date</label>
+          <input type="date" id="taskDate" required>
+        </div>
+        <div>
+          <label>Due Time</label>
+          <input type="time" id="taskTime">
+        </div>
+      </div>
+
+      <label>Status</label>
+      <select id="taskStatus">
+        <option>To Do</option>
+        <option>In Progress</option>
+        <option>Completed</option>
+      </select>
+
+      <button class="primary-btn" type="submit">Save Task</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/tasks.js"></script>
+<script src="js/notifications.js"></script>
+</body>
+</html>
